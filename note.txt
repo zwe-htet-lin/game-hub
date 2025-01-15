@@ -1,0 +1,43 @@
+Episode 9
+CLI - pwd, ls, cd, mkdir, touch, rm, cp, mv, cat
+TUI - vi, nano
+
+Episode 10
+npm init / npm init -y
+npm install (install all the dependencies in the package.json)
+
+npm i typescript / tsc index.ts (Transpile/Compile ts file to js file for browser runtime)
+npm i ts-node-dev   / ts-node-dev index.ts (Transpile/Compile ts file to js file for nodejs runtime)
+
+"scripts": {
+  "start": "node index.js / ts-node-dev index.ts",   // npm start
+  "dev": "node index.js / ts-node-dev index.ts",     // npm run dev
+}
+
+Episode 11
+npx create-react-app my-project / npx create-react-app my-project --template typescript
+
+npm i @types/something
+"@types" is a repository that contains type definition for various popular JS libaries
+
+styled components (React 18 for Beginners -> 4 -> 4)
+
+useRef Hook (React 18 for Beginners -> 6 -> 4)
+
+react-hook-form and zod (React 18 for Beginners -> 6 -> 6,7,8,9)
+
+Zod can extract a type from its schema object.
+type FormData = z.infer<typeof schema>;
+
+useEffect (React 18 for Beginners -> 7 -> 1)
+useEffect dependencies (React 18 for Beginners -> 7 -> 2)
+useEffect clean up (React 18 for Beginners -> 7 -> 4,9)
+
+div.mb-3>label.form-label+input[type=number].form-control
+
+styled-components
+react-icons
+react-hook-form
+zod
+@hookform/resolvers
+axios
