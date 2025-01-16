@@ -4,7 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 function App() {
   return (
     <>
-      <div className="grid grid-cols-2 grid-rows-2">
+      <div className="grid grid-cols-[auto_1fr]">
         <div className="col-span-2">
           <Navbar/>
         </div>
