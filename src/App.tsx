@@ -1,4 +1,5 @@
-import Navbar from "./components/navbar/NavBar";
+import GameGrid from "./components/game/GameGrid";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
@@ -8,7 +9,9 @@ function App() {
           <Navbar/>
         </div>
         <div className="hidden lg:block">Aside</div>
-        <div className="col-span-2 lg:col-span-1">Main</div>
+        <div className="col-span-2 lg:col-span-1">
+          <GameGrid/>
+        </div>
       </div>
     </>
   );
