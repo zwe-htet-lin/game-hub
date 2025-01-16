@@ -31,8 +31,8 @@ const PlatformIcon = ({ platforms }: Props) => {
 
   return (
     <div className="flex items-center">
-      {platforms.map(platform => 
-        <div className="px-1">{icons[platform.slug]}</div>
+      {platforms.map((platform, index) => 
+        <div key={index} className="px-1">{icons[platform.slug]}</div>
       )}
     </div>
   )
