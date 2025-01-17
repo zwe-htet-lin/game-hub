@@ -6,8 +6,8 @@ interface Props {
 
 const RatingScore = ({ score }: Props) => {
   return (
-    <Badge variant={score > 75 ? 'default' : score > 60 ? 'secondary' : 'destructive'}>
-      {score}
+    <Badge variant={score > 75 ? 'default' : score > 60 ? 'secondary' : 'destructive'} className="ml-3">
+      {score ? score : '?'}
     </Badge>
   )
 }

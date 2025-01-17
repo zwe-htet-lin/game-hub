@@ -19,7 +19,7 @@ const GameCardSkeleton = () => {
           <Skeleton className="absolute w-full h-full top-0 left-0"/>
         </div>
         <div className="relative">
-          <h1 className="text-xl font-medium my-2 opacity-0">Zwe Htet Lin</h1>
+          <h1 className="text-xl font-medium my-3 opacity-0">Zwe Htet Lin</h1>
           <Skeleton className="absolute w-full h-full top-0 left-0"/>
         </div>
         <div className="relative">

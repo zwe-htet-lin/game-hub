@@ -22,12 +22,12 @@ const GameCard = ({ game }: Props) => {
         <img src={getCroppedImageUrl(game.background_image)} alt={game.name} className="w-full"/>
       </div>
       <CardContent className="p-3">
-        <div className="flex justify-between">
-          <PlatformIcon platforms={game.parent_platforms.map(p => p.platform)}/>
+        <PlatformIcon platforms={game.parent_platforms.map(p => p.platform)}/>
+        <h1 className="text-xl font-medium leading-6 my-3 hover:opacity-80 transition-opacity duration-300">{game.name}</h1>
+        <div className="flex items-center">
+          <RatingEmoji rating={game.rating_top}/>
           <RatingScore score={game.metacritic}/>
         </div>
-        <h1 className="text-xl font-medium leading-6 my-2 hover:opacity-80 transition-opacity duration-300">{game.name}</h1>
-        <RatingEmoji rating={game.rating_top}/>
       </CardContent>
     </Card>
   )
