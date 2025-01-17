@@ -17,7 +17,10 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 
     setLoading(true);
     apiClient.get<DataResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
-    .then(res => setData(res.data.results))
+    .then(res => {
+      setData(res.data.results)
+      setError(''); // set the error back to empty string if there was an error.
+    })
     .catch(err => {
       if(err instanceof CanceledError) return;
       setError(err.message);
