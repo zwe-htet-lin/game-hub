@@ -2,20 +2,20 @@ import { Genre } from "@/hooks/useGenre";
 import GameGrid from "./game/GameGrid"
 import PlatformSelector from "./platform/PlatformSelector";
 import { Platform } from "@/hooks/useGame";
+import { GameQuery } from "@/App";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
   onSelectPlatform: (platform: Platform) => void;
 }
 
-const Main = ({ selectedGenre, selectedPlatform, onSelectPlatform }: Props) => {
+const Main = ({ gameQuery, onSelectPlatform }: Props) => {
   return (
     <>
       <div className="my-4">
-        <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={onSelectPlatform}/>
+        <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={onSelectPlatform}/>
       </div>
-      <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform}/>
+      <GameGrid gameQuery={gameQuery}/>
     </>
   )
 }

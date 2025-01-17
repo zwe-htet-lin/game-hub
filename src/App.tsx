@@ -5,9 +5,13 @@ import { Genre } from "./hooks/useGenre";
 import Main from "./components/main/Main";
 import { Platform } from "./hooks/useGame";
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 function App() {
-  const [ selectedPlatform, setSelectedPlatform ] = useState<Platform | null>(null); 
-  const [ selectedGenre, setSelectedGenre ] = useState<Genre | null>(null);
+  const [ gameQuery, setGameQuery ] = useState<GameQuery>({} as GameQuery);
 
   return (
     <>
@@ -16,12 +20,10 @@ function App() {
           <Navbar/>
         </div>
         <div className="hidden lg:block px-3">
-          <Aside selectedGenre={selectedGenre} onSelectGenre={(genre) => setSelectedGenre(genre)}/>
+          <Aside selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})}/>
         </div>
         <div className="row-span-1 col-span-1 px-4">
-          <Main selectedGenre={selectedGenre} 
-            selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => setSelectedPlatform(platform)}
-          />
+          <Main gameQuery={gameQuery} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})}/>
         </div>
       </div>
     </>
