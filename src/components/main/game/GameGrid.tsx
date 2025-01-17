@@ -1,7 +1,6 @@
-import useGame, { Platform } from "@/hooks/useGame"
+import useGame from "@/hooks/useGame"
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
-import { Genre } from "@/hooks/useGenre";
 import { GameQuery } from "@/App";
 
 interface Props {

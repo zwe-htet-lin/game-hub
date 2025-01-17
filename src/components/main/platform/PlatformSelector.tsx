@@ -7,8 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select"
-import { Platform } from "@/hooks/useGame";
-import usePlatform from "@/hooks/usePlatform";
+import usePlatform, { Platform } from "@/hooks/usePlatform";
 
 interface Props {
   selectedPlatform: Platform | null;
@@ -21,7 +20,12 @@ const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
   if(error) return null;
 
   return (
-    <Select>
+    <Select onValueChange={(value) => {
+      const selected = platforms.find(platform => platform.name === value);
+      if (selected) {
+        onSelectPlatform(selected);
+      }
+    }}>
       <SelectTrigger className="w-[120px]">
         <SelectValue placeholder={selectedPlatform?.name || 'Platforms'} />
       </SelectTrigger>
@@ -29,7 +33,7 @@ const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
         <SelectGroup>
           <SelectLabel>Platforms</SelectLabel>
           {platforms.map(platform => 
-            <SelectItem onClick={() => onSelectPlatform(platform)} key={platform.id} value={platform.name}>
+            <SelectItem key={platform.id} value={platform.name}>
               {platform.name}
             </SelectItem>
           )}

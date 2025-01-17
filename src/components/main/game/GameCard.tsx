@@ -3,6 +3,7 @@ import { Card, CardContent } from "../../ui/Card";
 import PlatformIcon from "./PlatformIcon";
 import RatingEmoji from "./RatingEmoji";
 import RatingScore from "./RatingScore";
+import noImage from "../../../assets/no-image-placeholder.webp"
 
 interface Props {
   game: Game;
@@ -10,6 +11,8 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   const getCroppedImageUrl = (url: string) => {
+    if(!url) return noImage;
+    
     const target = "media/";
     const index = url.indexOf(target) + target.length;
     return url.slice(0, index) + "crop/600/400/" + url.slice(index);

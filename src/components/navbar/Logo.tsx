@@ -6,7 +6,7 @@ const Logo = () => {
       <div className="size-16">
         <img src={logo} alt="Logo"/>
       </div>
-      <span className="whitespace-nowrap text-xl font-medium">Game Hub</span>
+      <span className="whitespace-nowrap text-xl font-medium hidden md:block">Game Hub</span>
     </div>
   )
 }

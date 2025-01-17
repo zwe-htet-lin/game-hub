@@ -12,7 +12,7 @@ const ColorSwitchMode = () => {
   return (
     <div className="flex justify-center items-center">
       <Switch onClick={toggleDarkMode} defaultChecked/>
-      <span className="ml-2 whitespace-nowrap">Dark Mode</span>
+      <span className="ml-2 whitespace-nowrap hidden md:block">Dark Mode</span>
     </div>
   )
 }
