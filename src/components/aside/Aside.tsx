@@ -15,11 +15,12 @@ const Aside = ({ selectedGenre, onSelectGenre }: Props) => {
     return id === selectedGenre?.id ? 'font-medium text-lg underline' : 'font-normal';
   }
 
+  if(error) return skeletons.map(skeleton => <AsideSkeleton key={skeleton}/>);
+
   return (
     <>
       <h1 className="text-3xl font-bold mb-5">Genres</h1>
       <ul>
-        {error && skeletons.map(skeleton => <AsideSkeleton key={skeleton}/>)}
         {isLoading && skeletons.map(skeleton => <AsideSkeleton key={skeleton}/>)}
         {genres.map(genre => 
           <div key={genre.id} className="flex items-center my-3">
