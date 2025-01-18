@@ -1,8 +1,9 @@
 import GameGrid from "./game/GameGrid"
-import PlatformSelector from "./platform/PlatformSelector";
+import PlatformSelector from "./PlatformSelector";
 import { GameQuery } from "@/App";
-import SortSelector from "./sort/SortSelector";
+import SortSelector from "./SortSelector";
 import { Platform } from "@/hooks/usePlatform";
+import Heading from "./Heading";
 
 interface Props {
   gameQuery: GameQuery;
@@ -12,15 +13,16 @@ interface Props {
 
 const Main = ({ gameQuery, onSelectPlatform, onSelectSortOrder }: Props) => {
   return (
-    <>
-      <div className="flex items-center my-4">
+    <div>
+      <Heading gameQuery={gameQuery}/>
+      <div className="flex items-center my-5">
         <div className="mr-4">
           <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={onSelectPlatform}/>
         </div>
         <SortSelector selectedSortOrder={gameQuery.sortOrder} onSelectSortOrder={onSelectSortOrder}/>
       </div>
       <GameGrid gameQuery={gameQuery}/>
-    </>
+    </div>
   )
 }
 
