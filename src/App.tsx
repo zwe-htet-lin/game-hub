@@ -9,6 +9,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     <>
       <div className="grid grid-rows-[auto_1fr] lg:grid-rows-[auto_1fr] lg:grid-cols-[200px_1fr]">
         <div className="row-span-1 col-span-1 lg:col-span-2">
-          <Navbar/>
+          <Navbar onSearch={(searchText) => setGameQuery({...gameQuery, searchText})}/>
         </div>
         <div className="hidden lg:block px-3">
           <Aside selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})}/>
