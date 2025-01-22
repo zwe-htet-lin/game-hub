@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: none;
+}
+
 @layer base {
   :root {
 

@@ -31,7 +31,7 @@ const GameCard = ({ game }: Props) => {
         <PlatformIcon
           platforms={game.parent_platforms.map((p) => p.platform)}
         />
-        <h1 className="text-xl font-medium leading-6 my-3 hover:opacity-80 transition-opacity duration-300">
+        <h1 className="text-xl font-medium leading-6 my-3 hover:opacity-80 transition-opacity duration-300 cursor-pointer">
           {game.name}
         </h1>
         <div className="flex items-center">

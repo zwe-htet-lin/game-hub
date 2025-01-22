@@ -15,10 +15,14 @@ const Aside = ({ selectedGenre, onSelectGenre }: Props) => {
     return id === selectedGenre?.id ? 'font-medium text-lg underline' : 'font-normal';
   }
 
-  if(error) return skeletons.map(skeleton => <AsideSkeleton key={skeleton}/>);
+  const handleOnClick = (genre: Genre) => {
+    onSelectGenre(genre);
+  }
+
+  if(error) return null;
 
   return (
-    <>
+    <div className="w-56 px-3">
       <h1 className="text-3xl font-bold mb-5">Genres</h1>
       <ul>
         {isLoading && skeletons.map(skeleton => <AsideSkeleton key={skeleton}/>)}
@@ -26,13 +30,13 @@ const Aside = ({ selectedGenre, onSelectGenre }: Props) => {
           <div key={genre.id} className="flex items-center my-3">
             <img src={genre.image_background} alt={genre.name} className="size-8 rounded-md mr-2 object-cover"/>
             <Button variant="link" className={`p-0 text-base ${handleFontWeight(genre.id)}`} 
-              onClick={() => onSelectGenre(genre)}>
+              onClick={() => handleOnClick(genre)}>
                 {genre.name}
             </Button>
           </div>
         )}
       </ul>
-    </>
+    </div>
   )
 }
 

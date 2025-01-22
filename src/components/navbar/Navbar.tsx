@@ -1,5 +1,5 @@
 import ColorSwitchMode from "./ColorSwitchMode";
-import Logo from "./Logo";
+import logo from "../../assets/logo.webp";
 import SearchBox from "./SearchBox";
 
 interface Props {
@@ -8,8 +8,8 @@ interface Props {
 
 const Navbar = ({ onSearch }: Props) => {
   return (
-    <div className="flex justify-between items-center gap-4 p-3">
-      <Logo/>
+    <div className="flex items-center gap-2 sm:gap-4 p-3">
+      <img src={logo} alt="Logo" className="size-14 md:size-16 object-cover"/>
       <SearchBox onSearch={onSearch}/>
       <ColorSwitchMode/>
     </div>

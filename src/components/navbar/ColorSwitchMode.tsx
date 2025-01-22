@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Switch } from "../ui/Switch";
+import { AiOutlineSun   } from "react-icons/ai";
+import { FiMoon  } from "react-icons/fi";
+import { Button } from "../ui/Button";
 
 const ColorSwitchMode = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -11,8 +13,9 @@ const ColorSwitchMode = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <Switch onClick={toggleDarkMode} defaultChecked/>
-      <span className="ml-2 whitespace-nowrap hidden md:block">Dark Mode</span>
+      <Button variant="ghost" size="icon" className="[&_svg]:size-5" onClick={toggleDarkMode}>
+        {darkMode ? <AiOutlineSun /> : <FiMoon/>}
+      </Button>
     </div>
   )
 }

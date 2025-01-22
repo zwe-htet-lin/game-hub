@@ -17,16 +17,18 @@ interface Props {
 const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const { data: platforms, error } = usePlatform();
 
+  const handleOnValueChange = (value: string) => {
+    const selected = platforms.find(platform => platform.name === value);
+    if (selected) {
+      onSelectPlatform(selected);
+    }
+  }
+
   if(error) return null;
 
   return (
-    <Select onValueChange={(value) => {
-      const selected = platforms.find(platform => platform.name === value);
-      if (selected) {
-        onSelectPlatform(selected);
-      }
-    }}>
-      <SelectTrigger className="w-[120px]">
+    <Select onValueChange={handleOnValueChange}>
+      <SelectTrigger className="w-auto min-w-[130px]">
         <SelectValue placeholder={selectedPlatform?.name || 'Platforms'} />
       </SelectTrigger>
       <SelectContent>

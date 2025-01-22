@@ -22,17 +22,19 @@ const SortSelector = ({ selectedSortOrder, onSelectSortOrder }: Props) => {
     { value: "-rating", label: "Average rating" },
   ];
 
+  const handleOnValueChange = (value: string) => {
+    const selected = sortOrders.find(sortOrder => sortOrder.label === value);
+    if (selected) {
+      onSelectSortOrder(selected.value);
+    }
+  }
+
   const currentSortOrder = sortOrders.find(sortOrder => sortOrder.value === selectedSortOrder);
 
   return (
-    <Select onValueChange={(value) => {
-      const selected = sortOrders.find(sortOrder => sortOrder.label === value);
-      if (selected) {
-        onSelectSortOrder(selected.value);
-      }
-    }}>
-      <SelectTrigger className="w-[190px]">
-        <SelectValue placeholder="Order by: Revelance">
+    <Select onValueChange={handleOnValueChange}>
+      <SelectTrigger className="w-auto min-w-[130px]">
+        <SelectValue placeholder={`Order by: ${currentSortOrder?.label || 'Revelance'}`}>
           {`Order by: ${currentSortOrder?.label || 'Revelance'}`}
         </SelectValue>
       </SelectTrigger>
