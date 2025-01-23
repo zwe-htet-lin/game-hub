@@ -13,7 +13,7 @@ import { ReactElement } from "react";
 import { Platform } from "@/hooks/usePlatform";
 
 interface Props {
-  platforms: Platform[]
+  platforms: Platform[] | null;
 }
 
 const PlatformIcon = ({ platforms }: Props) => {
@@ -31,7 +31,7 @@ const PlatformIcon = ({ platforms }: Props) => {
 
   return (
     <div className="flex items-center">
-      {platforms.map((platform, index) => 
+      {platforms?.map((platform, index) => 
         <div key={index} className="px-1">{icons[platform.slug]}</div>
       )}
     </div>

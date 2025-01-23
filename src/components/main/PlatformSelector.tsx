@@ -15,10 +15,10 @@ interface Props {
 }
 
 const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
-  const { data: platforms, error } = usePlatform();
+  const { data, error } = usePlatform();
 
   const handleOnValueChange = (value: string) => {
-    const selected = platforms?.results.find(platform => platform.name === value);
+    const selected = data?.results.find(platform => platform.name === value);
     if (selected) {
       onSelectPlatform(selected);
     }
@@ -34,7 +34,7 @@ const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Platforms</SelectLabel>
-          {platforms?.results.map(platform => 
+          {data?.results.map(platform => 
             <SelectItem key={platform.id} value={platform.name}>
               {platform.name}
             </SelectItem>

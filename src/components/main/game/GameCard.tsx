@@ -29,7 +29,7 @@ const GameCard = ({ game }: Props) => {
       </div>
       <CardContent className="p-3">
         <PlatformIcon
-          platforms={game.parent_platforms.map((p) => p.platform)}
+          platforms={game.parent_platforms ? game.parent_platforms.map((p) => p.platform) : null}
         />
         <h1 className="text-xl font-medium leading-6 my-3 hover:opacity-80 transition-opacity duration-300 cursor-pointer">
           {game.name}
