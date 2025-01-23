@@ -26,7 +26,7 @@ const Aside = ({ selectedGenre, onSelectGenre }: Props) => {
       <h1 className="text-3xl font-bold mb-5">Genres</h1>
       <ul>
         {isLoading && skeletons.map(skeleton => <AsideSkeleton key={skeleton}/>)}
-        {genres.map(genre => 
+        {genres?.results.map(genre => 
           <div key={genre.id} className="flex items-center my-3">
             <img src={genre.image_background} alt={genre.name} className="size-8 rounded-md mr-2 object-cover"/>
             <Button variant="link" className={`p-0 text-base ${handleFontWeight(genre.id)}`} 

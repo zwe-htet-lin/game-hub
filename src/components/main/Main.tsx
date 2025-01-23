@@ -22,7 +22,7 @@ const Main = ({ gameQuery, onSearch, onSelectGenre, onSelectPlatform, onSelectSo
   const { data: games, error, isLoading } = useGame(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-  if(error) return <p className="text-center text-xl my-5">{error}</p>;
+  if(error) return <p className="text-center text-xl my-5">{error.message}</p>;
 
   return (
     <div className="px-4">
@@ -50,7 +50,7 @@ const Main = ({ gameQuery, onSearch, onSelectGenre, onSelectPlatform, onSelectSo
           {skeletons.map(skeleton => <GameCardSkeleton key={skeleton}/>)}
         </div>
       }
-      <GameGrid games={games}/>
+      <GameGrid games={games?.results}/>
     </div>
   )
 }

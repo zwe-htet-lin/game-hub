@@ -18,7 +18,7 @@ const GenreSelector = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data: genres, error } = useGenre();
 
   const handleOnValueChange = (value: string) => {
-    const selected = genres.find(genre => genre.name === value);
+    const selected = genres?.results.find(genre => genre.name === value);
     if (selected) {
       onSelectGenre(selected);
     }
@@ -34,7 +34,7 @@ const GenreSelector = ({ selectedGenre, onSelectGenre }: Props) => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Genres</SelectLabel>
-          {genres.map(genre => 
+          {genres?.results.map(genre => 
             <SelectItem key={genre.id} value={genre.name}>
               {genre.name}
             </SelectItem>
