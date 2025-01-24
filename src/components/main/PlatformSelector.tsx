@@ -6,39 +6,40 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select"
-import usePlatform, { Platform } from "@/hooks/usePlatform";
+} from "@/components/ui/Select";
+import usePlatform from "@/hooks/usePlatform";
+import useGameQueryStore from "@/store/store";
 
-interface Props {
-  selectedPlatform: Platform | null;
-  onSelectPlatform: (platform: Platform) => void;
-}
-
-const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
+const PlatformSelector = () => {
   const { data, error } = usePlatform();
 
-  const handleOnValueChange = (value: string) => {
-    const selected = data?.results.find(platform => platform.name === value);
-    if (selected) {
-      onSelectPlatform(selected);
-    }
-  }
+  const setPlatformId = useGameQueryStore((s) => s.setPlatformId); // Used the selector to make the component only depends on setPlatformId function.
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
 
-  if(error) return null;
+  const handleOnValueChange = (value: string) => {
+    const selectedPlatform = data?.results.find((platform) => platform.name === value);
+    if (selectedPlatform) {
+      setPlatformId(selectedPlatform.id);
+    }
+  };
+
+  const selectedPlatform = data?.results.find((platform) => platform.id === selectedPlatformId);
+
+  if (error) return null;
 
   return (
     <Select onValueChange={handleOnValueChange}>
       <SelectTrigger className="w-auto min-w-[130px]">
-        <SelectValue placeholder={selectedPlatform?.name || 'Platforms'} />
+        <SelectValue placeholder={selectedPlatform?.name || "Platforms"} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Platforms</SelectLabel>
-          {data?.results.map(platform => 
+          {data?.results.map((platform) => (
             <SelectItem key={platform.id} value={platform.name}>
               {platform.name}
             </SelectItem>
-          )}
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>

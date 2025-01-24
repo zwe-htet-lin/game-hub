@@ -6,39 +6,40 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select"
-import useGenre, { Genre } from "@/hooks/useGenre";
+} from "@/components/ui/Select";
+import useGenre from "@/hooks/useGenre";
+import useGameQueryStore from "@/store/store";
 
-interface Props {
-  selectedGenre: Genre | null;
-  onSelectGenre: (genre: Genre) => void;
-}
-
-const GenreSelector = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenreSelector = () => {
   const { data, error } = useGenre();
 
-  const handleOnValueChange = (value: string) => {
-    const selected = data?.results.find(genre => genre.name === value);
-    if (selected) {
-      onSelectGenre(selected);
-    }
-  }
+  const setGenreId = useGameQueryStore((s) => s.setGenreId); // Used the selector to make the component only depends on setGenreId function.
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
 
-  if(error) return null;
+  const handleOnValueChange = (value: string) => {
+    const selectedGenre = data?.results.find((genre) => genre.name === value);
+    if (selectedGenre) {
+      setGenreId(selectedGenre.id);
+    }
+  };
+
+  const selectedGenre = data?.results.find((genre) => genre.id === selectedGenreId);
+
+  if (error) return null;
 
   return (
     <Select onValueChange={handleOnValueChange}>
       <SelectTrigger className="w-auto min-w-[130px]">
-        <SelectValue placeholder={selectedGenre?.name || 'Genres'} />
+        <SelectValue placeholder={selectedGenre?.name || "Genres"} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Genres</SelectLabel>
-          {data?.results.map(genre => 
+          {data?.results.map((genre) => (
             <SelectItem key={genre.id} value={genre.name}>
               {genre.name}
             </SelectItem>
-          )}
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>

@@ -6,13 +6,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select"
+import useGameQueryStore from "@/store/store";
 
-interface Props {
-  selectedSortOrder: string;
-  onSelectSortOrder: (sortOrder: string) => void;
-}
-
-const SortSelector = ({ selectedSortOrder, onSelectSortOrder }: Props) => {
+const SortSelector = () => {
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
@@ -22,10 +18,13 @@ const SortSelector = ({ selectedSortOrder, onSelectSortOrder }: Props) => {
     { value: "-rating", label: "Average rating" },
   ];
 
+  const setSortOrder = useGameQueryStore((s) => s.setSortOrder); // Used the selector to make the component only depends on setSortOrder function.
+  const selectedSortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
+
   const handleOnValueChange = (value: string) => {
     const selected = sortOrders.find(sortOrder => sortOrder.label === value);
     if (selected) {
-      onSelectSortOrder(selected.value);
+      setSortOrder(selected.value);
     }
   }
 
@@ -41,7 +40,7 @@ const SortSelector = ({ selectedSortOrder, onSelectSortOrder }: Props) => {
       <SelectContent>
         <SelectGroup>
             {sortOrders.map(sortOrder => 
-              <SelectItem onChange={() => onSelectSortOrder(sortOrder.value)} key={sortOrder.value} value={sortOrder.label}>
+              <SelectItem key={sortOrder.value} value={sortOrder.label}>
                 {sortOrder.label}
               </SelectItem>
             )}

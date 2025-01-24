@@ -3,24 +3,23 @@ import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { Search } from "lucide-react";
 import { useRef } from "react";
+import useGameQueryStore from "@/store/store";
 
-interface Props {
-  searchText: string;
-  onSearch: (searchText: string) => void;
-}
-
-const SearchHeading = ({ searchText, onSearch }: Props) => {
+const SearchHeading = () => {
   const ref = useRef<HTMLInputElement>(null);
+
+  const searchText = useGameQueryStore(s => s.gameQuery.searchText);
+  const setSearchText = useGameQueryStore(s => s.setSearchText); // Used the selector to make the component only depends on setSearchText function.
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if(ref.current){
-      onSearch(ref.current.value);
+      setSearchText(ref.current.value);
     }
   }
 
   const handleOnCancel = () => {
-    onSearch('');
+    setSearchText('');
   }
 
   return (

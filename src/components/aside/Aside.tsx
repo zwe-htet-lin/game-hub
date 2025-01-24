@@ -1,22 +1,22 @@
 import useGenre, { Genre } from "@/hooks/useGenre"
 import { Button } from "../ui/Button";
 import AsideSkeleton from "./AsideSkeleton";
+import useGameQueryStore from "@/store/store";
 
-interface Props {
-  selectedGenre: Genre | null;
-  onSelectGenre: (genre: Genre) => void;
-}
-
-const Aside = ({ selectedGenre, onSelectGenre }: Props) => {
+const Aside = () => {
   const { data, error, isLoading } = useGenre();
+
+  const setGenreId = useGameQueryStore(s => s.setGenreId); // Used the selector to make the component only depends on setGenreId function.
+  const selectedGenreId = useGameQueryStore(s => s.gameQuery.genreId);
+
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-  const handleFontWeight = (id: number) => {
-    return id === selectedGenre?.id ? 'font-medium text-lg underline' : 'font-normal';
+  const handleOnClick = (genre: Genre) => {
+    setGenreId(genre.id);
   }
 
-  const handleOnClick = (genre: Genre) => {
-    onSelectGenre(genre);
+  const handleFontWeight = (id: number) => {
+    return id === selectedGenreId ? 'font-medium text-lg underline' : 'font-normal';
   }
 
   if(error) return null;
