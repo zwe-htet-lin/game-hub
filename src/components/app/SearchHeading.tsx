@@ -4,9 +4,11 @@ import { Input } from "../ui/Input";
 import { Search } from "lucide-react";
 import { useRef } from "react";
 import useGameQueryStore from "@/store/store";
+import { useNavigate } from "react-router-dom";
 
 const SearchHeading = () => {
   const ref = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const searchText = useGameQueryStore(s => s.gameQuery.searchText);
   const setSearchText = useGameQueryStore(s => s.setSearchText); // Used the selector to make the component only depends on setSearchText function.
@@ -20,6 +22,7 @@ const SearchHeading = () => {
 
   const handleOnCancel = () => {
     setSearchText('');
+    navigate(-1);
   }
 
   return (

@@ -4,16 +4,18 @@ import { useState } from "react"
 import { Button } from "../ui/Button";
 import { GoX } from "react-icons/go";
 import useGameQueryStore from "@/store/store";
+import { useNavigate } from "react-router-dom";
 
 const SearchBox = () => {
+  const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState<string>('');
-
   const setSearchText = useGameQueryStore(s => s.setSearchText); // Used the selector to make the component only depends on setSearchText function.
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSearchText(searchInput);
     setSearchInput('');
+    navigate('/');
   }
 
   const handleOnInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

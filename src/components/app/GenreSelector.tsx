@@ -7,11 +7,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select";
-import useGenre from "@/hooks/useGenre";
+import useGenres from "@/hooks/useGenres";
 import useGameQueryStore from "@/store/store";
 
 const GenreSelector = () => {
-  const { data, error } = useGenre();
+  const { data, error } = useGenres();
 
   const setGenreId = useGameQueryStore((s) => s.setGenreId); // Used the selector to make the component only depends on setGenreId function.
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
@@ -23,7 +23,9 @@ const GenreSelector = () => {
     }
   };
 
-  const selectedGenre = data?.results.find((genre) => genre.id === selectedGenreId);
+  const selectedGenre = data?.results.find(
+    (genre) => genre.id === selectedGenreId
+  );
 
   if (error) return null;
 
