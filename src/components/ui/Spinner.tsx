@@ -1,16 +1,19 @@
-import type React from "react"
+import type React from "react";
 
 interface SpinnerProps {
-  size?: "sm" | "md" | "lg"
-  color?: string
+  size?: "sm" | "md" | "lg";
+  color?: string;
 }
 
-const Spinner: React.FC<SpinnerProps> = ({ size = "md", color = "text-blue-600" }) => {
+const Spinner: React.FC<SpinnerProps> = ({
+  size = "md",
+  color = "text-blue-600",
+}) => {
   const sizeClasses = {
     sm: "w-4 h-4",
     md: "w-8 h-8",
     lg: "w-12 h-12",
-  }
+  };
 
   return (
     <div className="flex justify-center items-center">
@@ -23,7 +26,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = "md", color = "text-blue-600" 
         </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Spinner
+export default Spinner;

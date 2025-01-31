@@ -1,8 +1,8 @@
 import useGameQueryStore from "@/store/store";
-import SearchHeading from "./SearchHeading";
-import Heading from "./Heading";
 import GenreSelector from "./GenreSelector";
+import Heading from "./Heading";
 import PlatformSelector from "./PlatformSelector";
+import SearchHeading from "./SearchHeading";
 import SortSelector from "./SortSelector";
 
 interface Props {
@@ -34,7 +34,7 @@ const GameGridHeader = ({ isLoading }: Props) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default GameGridHeader
+export default GameGridHeader;

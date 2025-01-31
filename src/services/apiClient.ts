@@ -7,10 +7,10 @@ export interface ResponseData<T> {
 }
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.rawg.io/api',
+  baseURL: "https://api.rawg.io/api",
   params: {
-    key: 'e6233892f35646ba8d0cd5263a02dff0'
-  }
+    key: "e6233892f35646ba8d0cd5263a02dff0",
+  },
 });
 
 class APIClient<T> {
@@ -21,12 +21,16 @@ class APIClient<T> {
   }
 
   getAll = (config: AxiosRequestConfig) => {
-    return axiosInstance.get<ResponseData<T>>(this.endpoint, config).then(res => res.data)
-  }
+    return axiosInstance
+      .get<ResponseData<T>>(this.endpoint, config)
+      .then((res) => res.data);
+  };
 
   get = (id: number | string) => {
-    return axiosInstance.get<T>(this.endpoint + '/' + id).then(res => res.data);
-  }
+    return axiosInstance
+      .get<T>(this.endpoint + "/" + id)
+      .then((res) => res.data);
+  };
 }
 
 export default APIClient;

@@ -29,7 +29,8 @@ const GenreList = () => {
     <div className="w-56 max-h-[100vh] sticky top-0 overflow-scroll hide-scrollbar">
       <h1 className="text-3xl font-bold mb-5">Genres</h1>
       <ul>
-        {isLoading && skeletons.map((skeleton) => <GenreListSkeleton key={skeleton} />)}
+        {isLoading &&
+          skeletons.map((skeleton) => <GenreListSkeleton key={skeleton} />)}
         {data?.results.map((genre) => (
           <div key={genre.id} className="flex items-center my-3">
             <img
@@ -51,4 +52,4 @@ const GenreList = () => {
   );
 };
 
-export default GenreList
+export default GenreList;

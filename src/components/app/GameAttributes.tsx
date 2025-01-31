@@ -71,7 +71,7 @@ const GameAttributes = ({ game }: Props) => {
           </a>
         </DefinitionItem>
       ) : null}
-      <GameStore gameId={game.id}/>
+      <GameStore gameId={game.id} />
     </dl>
   );
 };

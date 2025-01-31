@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select"
+} from "@/components/ui/Select";
 import useGameQueryStore from "@/store/store";
 
 const SortSelector = () => {
@@ -22,28 +22,32 @@ const SortSelector = () => {
   const selectedSortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
 
   const handleOnValueChange = (value: string) => {
-    const selected = sortOrders.find(sortOrder => sortOrder.label === value);
+    const selected = sortOrders.find((sortOrder) => sortOrder.label === value);
     if (selected) {
       setSortOrder(selected.value);
     }
-  }
+  };
 
-  const currentSortOrder = sortOrders.find(sortOrder => sortOrder.value === selectedSortOrder);
+  const currentSortOrder = sortOrders.find(
+    (sortOrder) => sortOrder.value === selectedSortOrder
+  );
 
   return (
     <Select onValueChange={handleOnValueChange}>
       <SelectTrigger className="w-auto min-w-[130px]">
-        <SelectValue placeholder={`Order by: ${currentSortOrder?.label || 'Revelance'}`}>
-          {`Order by: ${currentSortOrder?.label || 'Revelance'}`}
+        <SelectValue
+          placeholder={`Order by: ${currentSortOrder?.label || "Revelance"}`}
+        >
+          {`Order by: ${currentSortOrder?.label || "Revelance"}`}
         </SelectValue>
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-            {sortOrders.map(sortOrder => 
-              <SelectItem key={sortOrder.value} value={sortOrder.label}>
-                {sortOrder.label}
-              </SelectItem>
-            )}
+          {sortOrders.map((sortOrder) => (
+            <SelectItem key={sortOrder.value} value={sortOrder.label}>
+              {sortOrder.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>

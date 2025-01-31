@@ -7,10 +7,10 @@ const useStores = (gameId: number) => {
   const apiClient = new APIClient<Store>(`/games/${gameId}/stores`);
 
   return useQuery({
-    queryKey: ['store', gameId],
+    queryKey: ["store", gameId],
     queryFn: apiClient.getAll,
-    staleTime: ms('24h'), //24h
-  })
-}
+    staleTime: ms("24h"), //24h
+  });
+};
 
 export default useStores;
