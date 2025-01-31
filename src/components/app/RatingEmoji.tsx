@@ -12,9 +12,11 @@ const RatingEmoji = ({ rating }: Props) => {
   const size = rating === 3 ? "size-6" : rating === 4 ? "size-6" : rating === 5 ? "size-7" : "";
 
   return (
-    <div className={`${size} mr-3`}>
-      <img src={src} alt={alt}/>
-    </div>
+    <>
+      <div className={`${size}`}>
+        <img src={src} alt={alt}/>
+      </div>
+    </>
   )
 }
 

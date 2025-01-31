@@ -4,7 +4,7 @@ import { FiMoon  } from "react-icons/fi";
 import { Button } from "../ui/Button";
 
 const ColorSwitchMode = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [ darkMode, setDarkMode ] = useState(true);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);

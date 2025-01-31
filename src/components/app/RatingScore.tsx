@@ -10,7 +10,7 @@ const RatingScore = ({ score }: Props) => {
       variant={
         score > 75 ? "default" : score > 60 ? "secondary" : "destructive"
       }
-      className="cursor-default"
+      className="cursor-default text-black"
     >
       {score ? score : "?"}
     </Badge>

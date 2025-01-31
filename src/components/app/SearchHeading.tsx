@@ -21,8 +21,8 @@ const SearchHeading = () => {
   }
 
   const handleOnCancel = () => {
-    setSearchText('');
     navigate(-1);
+    setSearchText('');
   }
 
   return (

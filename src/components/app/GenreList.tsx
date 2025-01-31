@@ -1,9 +1,9 @@
 import useGenres from "@/hooks/useGenres";
 import useGameQueryStore from "@/store/store";
 import { Button } from "../ui/Button";
-import AsideSkeleton from "./AsideSkeleton";
+import GenreListSkeleton from "./GenreListSkeleton";
 
-const Aside = () => {
+const GenreList = () => {
   const { data, error, isLoading } = useGenres();
 
   const setGenreId = useGameQueryStore((s) => s.setGenreId); // Used the selector to make the component only depends on setGenreId function.
@@ -26,10 +26,10 @@ const Aside = () => {
   if (error) return null;
 
   return (
-    <div className="w-56">
+    <div className="w-56 max-h-[100vh] sticky top-0 overflow-scroll hide-scrollbar">
       <h1 className="text-3xl font-bold mb-5">Genres</h1>
       <ul>
-        {isLoading && skeletons.map((skeleton) => <AsideSkeleton key={skeleton} />)}
+        {isLoading && skeletons.map((skeleton) => <GenreListSkeleton key={skeleton} />)}
         {data?.results.map((genre) => (
           <div key={genre.id} className="flex items-center my-3">
             <img
@@ -51,4 +51,4 @@ const Aside = () => {
   );
 };
 
-export default Aside;
+export default GenreList

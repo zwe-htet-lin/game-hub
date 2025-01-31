@@ -1,20 +1,13 @@
 import useGames from "@/hooks/useGames";
-import useGameQueryStore from "@/store/store";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "../ui/Spinner";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
-import GenreSelector from "./GenreSelector";
-import Heading from "./Heading";
-import PlatformSelector from "./PlatformSelector";
-import SearchHeading from "./SearchHeading";
-import SortSelector from "./SortSelector";
+import GameGridHeader from "./GameGridHeader";
 
-const Main = () => {
+const GameGrid = () => {
   const { data, error, isLoading, hasNextPage, fetchNextPage } = useGames();
-
-  const searchText = useGameQueryStore((s) => s.gameQuery.searchText);
 
   const gamesCount = data?.pages.reduce((acc, page) => acc + page.results.length, 0) || 0;
 
@@ -29,27 +22,9 @@ const Main = () => {
       next={() => fetchNextPage()}
       loader={<div className="overflow-hidden my-5"> <Spinner/> </div>}
     >
-      <div className="px-4">
-        {searchText && <SearchHeading />}
-        {!searchText && (
-          <div className="text-center lg:text-left">
-            <Heading />
-            {!isLoading && (
-              <div className="flex flex-wrap items-center justify-center lg:justify-start">
-                <div className="mr-4 mb-5 block lg:hidden">
-                  <GenreSelector />
-                </div>
-                <div className="mr-4 mb-5">
-                  <PlatformSelector />
-                </div>
-                <div className="mb-5">
-                  <SortSelector />
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="px-0 lg:px-5">
+        <GameGridHeader isLoading={isLoading}/>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5">
           {isLoading && 
             skeletons.map((skeleton) => (<GameCardSkeleton key={skeleton}/>))
           }
@@ -64,4 +39,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default GameGrid

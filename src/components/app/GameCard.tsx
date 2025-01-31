@@ -27,12 +27,12 @@ const GameCard = ({ game }: Props) => {
       <CardContent className="p-3">
         <PlatformIcon platforms={game.parent_platforms ? game.parent_platforms.map((p) => p.platform) : null}/>
         <Link to={"/games/" + game.slug}>
-          <h1 className="text-xl font-medium leading-6 my-3 hover:opacity-80 transition-opacity duration-300">
+          <h1 className="text-base sm:text-lg font-medium leading-6 my-3 hover:opacity-80 transition-opacity duration-300">
             {game.name}
           </h1>
         </Link>
         <div className="flex items-center">
-          <RatingEmoji rating={game.rating_top} />
+          {game.rating_top >= 3 ? <div className="mr-3"><RatingEmoji rating={game.rating_top} /></div> : null}
           <RatingScore score={game.metacritic} />
         </div>
       </CardContent>

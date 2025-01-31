@@ -1,5 +1,5 @@
-import Aside from "@/components/app/Aside";
-import Main from "@/components/app/Main";
+import GenreList from "@/components/app/GenreList";
+import GameGrid from "@/components/app/GameGrid";
 import useGameQueryStore from "@/store/store";
 
 const Home = () => {
@@ -7,9 +7,9 @@ const Home = () => {
 
   return (
     <div className={`grid lg:grid-cols-[auto_1fr]`}>
-      <div className="hidden lg:block">{!searchText && <Aside />}</div>
+      <div className="hidden lg:block">{!searchText && <GenreList />}</div>
       <div className="row-span-1 col-span-1">
-        <Main />
+        <GameGrid />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Skeleton } from "../ui/Skeleton"
 
-const AsideSkeleton = () => {
+const GenreListSkeleton = () => {
   return (
     <div className="flex items-center my-3">
       <div className="relative mr-2">
@@ -14,4 +14,4 @@ const AsideSkeleton = () => {
   )
 }
 
-export default AsideSkeleton
+export default GenreListSkeleton
