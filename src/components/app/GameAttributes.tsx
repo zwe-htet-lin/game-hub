@@ -27,7 +27,7 @@ const GameAttributes = ({ game }: Props) => {
   };
 
   return (
-    <dl className="grid grid-cols-2 gap-2">
+    <dl className="grid grid-cols-2 gap-3">
       {game.parent_platforms.length ? (
         <DefinitionItem term="Platforms" col_span="1">
           {game.parent_platforms.map(({ platform }, index) => (

@@ -11,7 +11,7 @@ const ExpandableText = ({ description }: Props) => {
   const md = useMediaQuery({ query: "(min-width: 768px)" });
   const sm = useMediaQuery({ query: "(min-width: 640px)" });
 
-  const limit = md ? 500 : sm ? 400 : 350;
+  const limit = md ? 500 : sm ? 400 : 300;
 
   if (!description) return null;
 
@@ -22,7 +22,7 @@ const ExpandableText = ({ description }: Props) => {
     : description.substring(0, limit) + " ...";
 
   return (
-    <p className="max-h-[140px] text-white overflow-y-scroll hide-scrollbar">
+    <p className="max-h-[165px] sm:max-h-[140px] text-white overflow-y-scroll hide-scrollbar">
       {summary}
       <Button
         type="button"

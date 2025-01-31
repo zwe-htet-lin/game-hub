@@ -51,14 +51,14 @@ const Game = () => {
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70"></div>
         <img
-          src={game.background_image}
+          src={game.background_image} 
           className="w-full min-h-[75vh] md:max-h-[75vh] object-cover object-center"
         />
         <div className="absolute inset-0 p-5 lg:p-10 pb-5 flex flex-col justify-end text-center lg:text-left">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
+          <h1 className="text-3xl lg:text-4xl font-bold text-white">
             {game.name}
           </h1>
-          <div className="flex items-center my-2 md:my-3 lg:my-4 justify-center lg:justify-start">
+          <div className="flex items-center my-3 lg:my-4 justify-center lg:justify-start">
             {game.rating_top >= 3 ? (
               <div className="mr-3">
                 <RatingEmoji rating={game.rating_top} />
