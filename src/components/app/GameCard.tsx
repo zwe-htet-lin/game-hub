@@ -1,7 +1,7 @@
 import { Game } from "@/types/Game";
 import { Link } from "react-router-dom";
 import noImage from "../../assets/no-image-placeholder.webp";
-import { Card, CardContent } from "../ui/Card";
+import { Card, CardContent } from "../ui/card";
 import PlatformIcon from "./PlatformIcon";
 import RatingEmoji from "./RatingEmoji";
 import RatingScore from "./RatingScore";

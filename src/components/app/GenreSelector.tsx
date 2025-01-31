@@ -6,7 +6,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
+} from "@/components/ui/select";
 import useGenres from "@/hooks/useGenres";
 import useGameQueryStore from "@/store/store";
 

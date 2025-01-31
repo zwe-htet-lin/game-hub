@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AiOutlineSun } from "react-icons/ai";
 import { FiMoon } from "react-icons/fi";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 
 const ColorSwitchMode = () => {
   const [darkMode, setDarkMode] = useState(true);

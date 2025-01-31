@@ -1,6 +1,6 @@
 import useScreenshots from "@/hooks/useScreenshots";
-import { Separator } from "../ui/Separator";
-import Spinner from "../ui/Spinner";
+import { Separator } from "../ui/separator";
+import Spinner from "../ui/spinner";
 
 interface Props {
   gameId: number;

@@ -1,6 +1,6 @@
 import GameCardImg from "../../assets/game-card-img.jpg";
-import { Card, CardContent } from "../ui/Card";
-import { Skeleton } from "../ui/Skeleton";
+import { Card, CardContent } from "../ui/card";
+import { Skeleton } from "../ui/skeleton";
 import RatingEmoji from "./RatingEmoji";
 import RatingScore from "./RatingScore";
 

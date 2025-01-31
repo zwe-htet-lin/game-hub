@@ -1,6 +1,6 @@
 import useGenres from "@/hooks/useGenres";
 import useGameQueryStore from "@/store/store";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import GenreListSkeleton from "./GenreListSkeleton";
 
 const GenreList = () => {

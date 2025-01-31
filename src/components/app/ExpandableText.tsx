@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 
 interface Props {
   description: string;

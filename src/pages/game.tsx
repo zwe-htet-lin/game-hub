@@ -4,7 +4,7 @@ import GameScreenshots from "@/components/app/GameScreenshots";
 import GameTrailer from "@/components/app/GameTrailer";
 import RatingEmoji from "@/components/app/RatingEmoji";
 import RatingScore from "@/components/app/RatingScore";
-import Spinner from "@/components/ui/Spinner";
+import Spinner from "@/components/ui/spinner";
 import useGame from "@/hooks/useGame";
 import { useParams } from "react-router-dom";
 

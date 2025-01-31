@@ -3,8 +3,8 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 import { GoX } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../ui/Button";
-import { Input } from "../ui/Input";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 const SearchBox = () => {
   const navigate = useNavigate();
