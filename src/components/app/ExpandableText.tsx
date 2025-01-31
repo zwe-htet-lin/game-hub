@@ -8,11 +8,10 @@ interface Props {
 
 const ExpandableText = ({ description }: Props) => {
   const [expanded, setExpanded] = useState(false);
-  const lg = useMediaQuery({ query: "(min-width: 1024px)" });
   const md = useMediaQuery({ query: "(min-width: 768px)" });
   const sm = useMediaQuery({ query: "(min-width: 640px)" });
 
-  const limit = lg ? 500 : md ? 400 : sm ? 300 : 150;
+  const limit = md ? 500 : sm ? 400 : 350;
 
   if (!description) return null;
 
@@ -23,14 +22,13 @@ const ExpandableText = ({ description }: Props) => {
     : description.substring(0, limit) + " ...";
 
   return (
-    <p className="max-h-[105px] sm:max-h-[140px] text-white overflow-y-scroll hide-scrollbar">
+    <p className="max-h-[140px] text-white overflow-y-scroll hide-scrollbar">
       {summary}
       <Button
         type="button"
-        variant="default"
         size="sm"
         onClick={() => setExpanded(!expanded)}
-        className="p-2 ml-1 bg-white text-black"
+        className="p-2 ml-1 bg-white text-black hover:bg-white"
       >
         {expanded ? "Show less" : "Read more"}
       </Button>
