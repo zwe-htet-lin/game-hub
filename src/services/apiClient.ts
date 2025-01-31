@@ -9,7 +9,7 @@ export interface ResponseData<T> {
 const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {
-    key: "e6233892f35646ba8d0cd5263a02dff0",
+    key: "5164c251860e438595b4ba5f393bb488",
   },
 });
 
